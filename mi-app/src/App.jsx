@@ -6,10 +6,11 @@ import Hero from './components/Hero'
 import Story from './components/Story'
 import ImageSection from './components/ImageSection'
 import ThreeD from './components/ThreeD'
+import Marquee from './components/Marquee'
+import Cursor from './components/Cursor'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/* ── Datos de cada sección de imagen ── */
 const scenes = [
   {
     label: 'Identidad visual',
@@ -57,7 +58,6 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const navRef = useRef(null)
 
-  // inicializar Lenis
   useLenis()
 
   useEffect(() => {
@@ -66,68 +66,95 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // animación del nav al hacer scroll
   useEffect(() => {
+    if (!navRef.current) return
     gsap.to(navRef.current, {
-      backgroundColor: scrolled ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0)',
-      backdropFilter: scrolled ? 'blur(12px)' : 'blur(0px)',
-      duration: 0.4,
+      backgroundColor: scrolled ? 'rgba(0,0,0,0.88)' : 'rgba(0,0,0,0)',
+      duration: 0.5,
       ease: 'power2.out',
     })
   }, [scrolled])
 
   return (
-    <div
-      className="bg-black text-white overflow-x-hidden"
-      style={{ fontFamily: "'Impact', 'Arial Black', sans-serif" }}
-    >
-      {/* ── NAV ── */}
-      <nav
-        ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5"
-        style={{ backgroundColor: 'rgba(0,0,0,0)' }}
+    <>
+      {/* cursor personalizado */}
+      <Cursor />
+
+      <div
+        className="bg-black text-white overflow-x-hidden"
+        style={{ fontFamily: "'Impact', 'Arial Black', sans-serif", cursor: 'none' }}
       >
-        <span className="text-lg tracking-[0.3em] uppercase text-white/70 font-sans font-light">
-          AltF4
-        </span>
-        <div className="flex gap-8 text-[10px] tracking-[0.25em] uppercase text-white/40 font-sans">
-          <a href="#story" className="hover:text-amber-400 transition-colors duration-300">Historia</a>
-          <a href="#gallery" className="hover:text-amber-400 transition-colors duration-300">Galería</a>
-          <a href="#3d" className="hover:text-amber-400 transition-colors duration-300">3D</a>
+        {/* ── NAV ── */}
+        <nav
+          ref={navRef}
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5"
+          style={{ backgroundColor: 'rgba(0,0,0,0)' }}
+        >
+          <span className="text-base tracking-[0.35em] uppercase text-white/60 font-sans font-light">
+            AltF4
+          </span>
+          <div className="flex gap-8 text-[10px] tracking-[0.3em] uppercase text-white/35 font-sans">
+            {['Historia', 'Galería', '3D'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase().replace('í', 'i')}`}
+                className="relative group"
+              >
+                <span className="hover:text-amber-400 transition-colors duration-300">{item}</span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-400 group-hover:w-full transition-all duration-300" />
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        {/* ── HERO ── */}
+        <Hero />
+
+        {/* ── MARQUEE 1 ── */}
+        <Marquee text="ALTF4 · DISEÑO · IDENTIDAD · FORMA" direction={1} accent="#f59e0b" />
+
+        {/* ── STORY ── */}
+        <Story />
+
+        {/* ── MARQUEE 2 ── */}
+        <Marquee text="GALERÍA · IMÁGENES · PROYECTO · VISUAL" direction={-1} accent="#e879f9" />
+
+        {/* separador galería */}
+        <div id="galeria" className="flex items-center gap-6 px-8 pt-20 pb-4 max-w-6xl mx-auto">
+          <div className="h-px flex-1 bg-white/8" />
+          <span className="text-[10px] tracking-[0.5em] uppercase text-amber-400/50 font-sans">Galería</span>
+          <div className="h-px flex-1 bg-white/8" />
         </div>
-      </nav>
 
-      {/* ── SECCIONES ── */}
-      <Hero />
-      <Story />
+        {/* ── ESCENAS ── */}
+        {scenes.map((scene, i) => (
+          <ImageSection
+            key={i}
+            index={i + 1}
+            label={scene.label}
+            title={scene.title}
+            description={scene.description}
+            align={scene.align}
+            accent={scene.accent}
+          />
+        ))}
 
-      {/* separador */}
-      <div id="gallery" className="flex items-center gap-6 px-8 py-20 max-w-6xl mx-auto">
-        <div className="h-px flex-1 bg-white/10" />
-        <span className="text-[10px] tracking-[0.5em] uppercase text-amber-400/60 font-sans">Galería</span>
-        <div className="h-px flex-1 bg-white/10" />
+        {/* ── MARQUEE 3 ── */}
+        <Marquee text="3D · BLENDER · PRÓXIMAMENTE · RENDER" direction={1} accent="#38bdf8" />
+
+        {/* ── 3D ── */}
+        <ThreeD />
+
+        {/* ── FOOTER ── */}
+        <footer className="border-t py-12 px-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+          style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+          <span className="text-xs tracking-[0.4em] uppercase text-white/12 font-sans">AltF4 © 2026</span>
+          <div className="flex gap-2 items-center">
+            <div className="w-1 h-1 rounded-full bg-amber-400/30" />
+            <span className="text-xs tracking-[0.3em] uppercase text-white/10 font-sans">Diseño · Identidad · Forma</span>
+          </div>
+        </footer>
       </div>
-
-      {/* ── ESCENAS DE IMAGEN ── */}
-      {scenes.map((scene, i) => (
-        <ImageSection
-          key={i}
-          index={i + 1}
-          label={scene.label}
-          title={scene.title}
-          description={scene.description}
-          align={scene.align}
-          accent={scene.accent}
-        />
-      ))}
-
-      <ThreeD />
-
-      {/* ── FOOTER ── */}
-      <footer className="border-t border-white/5 py-10 px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="text-xs tracking-[0.4em] uppercase text-white/15 font-sans">AltF4 © 2026</span>
-        <span className="text-xs tracking-[0.3em] uppercase text-white/10 font-sans">Diseño · Identidad · Forma</span>
-      </footer>
-    </div>
+    </>
   )
 }
