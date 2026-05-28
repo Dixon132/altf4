@@ -5,9 +5,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const items = [
-    { num: '01', title: 'Concepto', desc: 'Minimalismo con carácter. Menos ruido, más impacto en cada píxel.' },
-    { num: '02', title: 'Paleta', desc: 'Negro profundo, ámbar eléctrico. Contraste que no pide permiso.' },
-    { num: '03', title: 'Forma', desc: 'Tipografía que ocupa espacio. Geometría que guía la mirada.' },
+    {
+        num: '01',
+        title: 'Concepto',
+        desc: 'Una reinterpretación de la Guerra del Gas de Bolivia (2003): policías rediseñados como entidades que absorben el alma de los ciudadanos — el gas como metáfora del espíritu colectivo que el Estado intenta extraer y controlar.',
+    },
+    {
+        num: '02',
+        title: 'Paleta',
+        desc: 'Oscura por decisión. Negros densos, grises ceniza y destellos de ámbar sucio evocan humo, represión y calles sin luz. El color no decora — acusa.',
+    },
+    {
+        num: '03',
+        title: 'Formas',
+        desc: 'Modelos de personajes y escenarios construidos desde cero en Blender. Entornos urbanos con bibliotecas de assets procedurales; figuras policiales con geometría distorsionada para reflejar su naturaleza alterada.',
+    },
 ]
 
 // divide un string en spans por letra
@@ -99,8 +111,8 @@ export default function Story() {
                         textShadow: '0 0 60px rgba(251,191,36,0.1)',
                     }}
                 >
-                    <SplitText text="El diseño" className="block text-white" />
-                    <SplitText text="como lenguaje" className="block" style={{ color: '#f59e0b' }} />
+                    <SplitText text="Almas de" className="block text-white" />
+                    <SplitText text="humo y gas" className="block" style={{ color: '#f59e0b' }} />
                 </h2>
             </div>
 
@@ -109,9 +121,10 @@ export default function Story() {
                 className="text-white/40 font-sans font-light leading-relaxed mb-20 max-w-xl"
                 style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)' }}
             >
-                Cada decisión visual tiene un propósito. Desde la tipografía hasta el color,
-                todo comunica antes de que leas una sola palabra. Este proyecto explora
-                esa frontera donde el diseño deja de ser decoración y se convierte en narrativa.
+                Bolivia, 2003. El pueblo sale a las calles a defender el gas natural — su recurso, su alma colectiva.
+                Este proyecto reimagina ese conflicto: ¿qué pasaría si las fuerzas del orden no fueran humanas,
+                sino entidades modificadas para absorber la voluntad de los ciudadanos?
+                El gas como espíritu. La represión como extracción.
             </p>
 
             {/* stats */}
