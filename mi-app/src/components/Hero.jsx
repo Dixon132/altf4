@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import heroImg from '../assets/hero.png'
+import heroImg from '../assets/landing.jpeg'
 import Noise from './Noise'
 
 gsap.registerPlugin(ScrollTrigger)

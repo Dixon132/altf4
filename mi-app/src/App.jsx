@@ -8,6 +8,7 @@ import ImageSection from './components/ImageSection'
 import ThreeD from './components/ThreeD'
 import Marquee from './components/Marquee'
 import Cursor from './components/Cursor'
+import img11 from './assets/11.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,6 +20,7 @@ const scenes = [
       'El logotipo no es solo un símbolo — es el punto de partida de todo el sistema visual. Aquí se define cómo se comporta en distintos contextos, fondos y escalas.',
     align: 'left',
     accent: '#f59e0b',
+    image: img11,
   },
   {
     label: 'Composición',
@@ -136,6 +138,7 @@ export default function App() {
             description={scene.description}
             align={scene.align}
             accent={scene.accent}
+            image={scene.image}
           />
         ))}
 
