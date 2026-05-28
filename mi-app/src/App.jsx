@@ -9,50 +9,65 @@ import ThreeD from './components/ThreeD'
 import Marquee from './components/Marquee'
 import Cursor from './components/Cursor'
 import img11 from './assets/11.png'
+import img22 from './assets/22.png'
+import banner1 from './assets/baner.png'
+import banner2 from './assets/baner2.png'
+import banner3 from './assets/banner3.png'
+import banner4 from './assets/banner4.png'
+import banner5 from './assets/banner5.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const scenes = [
   {
-    label: 'Identidad visual',
-    title: 'La marca\nen movimiento',
+    label: 'El detonante',
+    title: 'El gas\nno se vende',
     description:
-      'El logotipo no es solo un símbolo — es el punto de partida de todo el sistema visual. Aquí se define cómo se comporta en distintos contextos, fondos y escalas.',
+      'Octubre 2003. Bolivia arde. El gobierno de Sánchez de Lozada intenta exportar gas natural por puertos chilenos. El pueblo responde con bloqueos, marchas y sangre. Aquí reimaginamos a los agentes del Estado como entidades que no reprimen — absorben.',
     align: 'left',
     accent: '#f59e0b',
-    image: img11,
+    image: banner1,
+    thumbs: [img11, img22, img22],
   },
   {
-    label: 'Composición',
-    title: 'Espacio y\njerarquía',
+    label: 'Los absorbedores',
+    title: 'Policías\nsin alma',
     description:
-      'La composición dicta dónde mira el ojo primero. Cada elemento tiene un peso visual calculado para guiar la atención sin forzarla.',
+      'Modificados para extraer la voluntad colectiva. Cada ciudadano que cae no muere — es vaciado. Su energía, su rabia, su identidad pasan a alimentar la máquina del Estado. El gas como metáfora del espíritu que se intenta robar.',
     align: 'right',
     accent: '#e879f9',
+    image: banner2,
+    thumbs: [img22, img22, img22],
   },
   {
-    label: 'Tipografía',
-    title: 'La voz\ndel diseño',
+    label: 'El Cerco de La Paz',
+    title: 'La ciudad\nasediada',
     description:
-      'Las fuentes no son neutras. Su peso, su tracking, su interlineado — todo suma al tono emocional del mensaje antes de que el lector procese una sola palabra.',
+      'Mineros, campesinos y vecinos de El Alto rodean La Paz. El cerco no es solo físico — es simbólico. La ciudad respira el gas que le pertenece mientras las entidades modificadas patrullan sus calles buscando almas que cosechar.',
     align: 'left',
     accent: '#38bdf8',
+    image: banner3,
+    thumbs: [img22, img22, img22],
   },
   {
-    label: 'Color',
-    title: 'Contraste\nsin ruido',
+    label: 'La masacre',
+    title: 'Sangre\ny humo',
     description:
-      'Una paleta reducida obliga a que cada color trabaje más. El negro absorbe, el ámbar activa, el blanco respira. Nada es decorativo.',
+      'Más de 60 muertos. Cientos de heridos. El gobierno ordena disparar. En nuestra versión, las balas no matan — transfieren. Cada impacto es una extracción forzada del alma. El humo del gas lacrimógeno se mezcla con el espíritu robado de los caídos.',
     align: 'right',
     accent: '#f59e0b',
+    image: banner4,
+    thumbs: [img22, img22, img22],
   },
   {
-    label: 'Detalle',
-    title: 'Lo que no\nse ve primero',
+    label: 'La renuncia',
+    title: 'El pueblo\nrecupera',
     description:
-      'Los mejores diseños tienen capas. Lo que el usuario descubre en el segundo o tercer vistazo es lo que hace que vuelva.',
+      'Sánchez de Lozada huye al exilio. El gas queda en Bolivia. Las entidades absorbedoras colapsan — sin almas que extraer, se desintegran. El espíritu colectivo regresa a las calles. La resistencia como acto de recuperación del alma propia.',
     align: 'left',
     accent: '#4ade80',
+    image: banner5,
+    thumbs: [img22, img22, img22],
   },
 ]
 
@@ -139,6 +154,7 @@ export default function App() {
             align={scene.align}
             accent={scene.accent}
             image={scene.image}
+            thumbs={scene.thumbs || []}
           />
         ))}
 

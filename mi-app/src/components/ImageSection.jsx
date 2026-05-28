@@ -247,7 +247,7 @@ export default function ImageSection({
             <div ref={bgRef} className="absolute inset-0 scale-110" style={{ willChange: 'transform' }}>
                 {image ? (
                     <img src={image} alt="" className="w-full h-full object-cover object-center"
-                        style={{ filter: 'brightness(0.55) saturate(1.2)' }} />
+                        style={{ filter: 'brightness(0.85) saturate(1.3) contrast(1.05)' }} />
                 ) : (
                     <>
                         <div className="w-full h-full" style={{
@@ -280,13 +280,13 @@ export default function ImageSection({
                 filter: 'blur(50px)',
             }} />
 
-            {/* gradientes */}
+            {/* gradientes — más suaves para que el fondo se vea */}
             <div className="absolute inset-0" style={{
                 background: isRight
-                    ? 'linear-gradient(to left,  rgba(0,0,0,0.97) 28%, rgba(0,0,0,0.5) 52%, transparent 100%)'
-                    : 'linear-gradient(to right, rgba(0,0,0,0.97) 28%, rgba(0,0,0,0.5) 52%, transparent 100%)',
+                    ? 'linear-gradient(to left,  rgba(0,0,0,0.88) 25%, rgba(0,0,0,0.35) 48%, transparent 100%)'
+                    : 'linear-gradient(to right, rgba(0,0,0,0.88) 25%, rgba(0,0,0,0.35) 48%, transparent 100%)',
             }} />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40" />
 
             {/* OVERLAY REVEAL */}
             <div ref={overlayRef} className="absolute inset-0 pointer-events-none"
@@ -341,21 +341,13 @@ export default function ImageSection({
                     </div>
                 </div>
 
-                {/* columna de cuadros */}
+                {/* columna de cuadros — 1 solo */}
                 <div
                     ref={cardsRef}
-                    className={`${isRight ? 'lg:order-1' : 'lg:order-2'} grid grid-cols-2 gap-3`}
+                    className={`${isRight ? 'lg:order-1' : 'lg:order-2'}`}
                 >
-                    {/* cuadro grande arriba a la izquierda */}
-                    <div className="img-card col-span-2">
+                    <div className="img-card">
                         <ImageCard accent={accent} delay={0} thumb={thumbs[0]} />
-                    </div>
-                    {/* dos cuadros pequeños abajo */}
-                    <div className="img-card">
-                        <ImageCard accent={accent} delay={0.1} thumb={thumbs[1]} />
-                    </div>
-                    <div className="img-card">
-                        <ImageCard accent={accent} delay={0.2} thumb={thumbs[2]} />
                     </div>
                 </div>
             </div>

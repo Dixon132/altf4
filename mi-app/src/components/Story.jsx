@@ -44,7 +44,6 @@ export default function Story() {
     const titleWrap = useRef(null)
     const subRef = useRef(null)
     const itemsRef = useRef([])
-    const statsRef = useRef([])
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -69,20 +68,6 @@ export default function Story() {
                     x: 60, opacity: 0, duration: 0.9, ease: 'power3.out',
                     delay: i * 0.1,
                     scrollTrigger: { trigger: el, start: 'top 88%' },
-                })
-            })
-
-            // ── stats counter ──
-            statsRef.current.forEach((el) => {
-                const target = parseInt(el.dataset.target, 10)
-                gsap.from({ val: 0 }, {
-                    val: target,
-                    duration: 2,
-                    ease: 'power2.out',
-                    scrollTrigger: { trigger: el, start: 'top 85%' },
-                    onUpdate() {
-                        el.textContent = Math.round(this.targets()[0].val)
-                    },
                 })
             })
 
@@ -126,30 +111,6 @@ export default function Story() {
                 sino entidades modificadas para absorber la voluntad de los ciudadanos?
                 El gas como espíritu. La represión como extracción.
             </p>
-
-            {/* stats */}
-            <div className="grid grid-cols-3 gap-8 mb-20 border-t border-b border-white/8 py-10">
-                {[
-                    { target: 5, suffix: '+', label: 'Escenas' },
-                    { target: 100, suffix: '%', label: 'Diseño propio' },
-                    { target: 1, suffix: '', label: 'Proyecto' },
-                ].map((s, i) => (
-                    <div key={i} className="text-center">
-                        <div
-                            className="font-bold leading-none mb-2"
-                            style={{
-                                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                                fontFamily: "'Impact', 'Arial Black', sans-serif",
-                                color: '#f59e0b',
-                            }}
-                        >
-                            <span ref={el => statsRef.current[i] = el} data-target={s.target}>0</span>
-                            <span>{s.suffix}</span>
-                        </div>
-                        <p className="text-[10px] tracking-[0.4em] uppercase text-white/30 font-sans">{s.label}</p>
-                    </div>
-                ))}
-            </div>
 
             {/* items */}
             <div className="space-y-0">
